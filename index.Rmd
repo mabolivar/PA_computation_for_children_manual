@@ -1,0 +1,25 @@
+--- 
+title: "Physical activity calculator manual"
+author: "Epiandes"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+---
+
+# Introduction {#intro}
+
+This code computes minutes of physical activity (PA) intensity (sedentary, light, moderate and vigorous) using  evidence-based cut points for accelerometry data (ActiGraph). The implemented procedure follows the protocol proposed by ISCOLE as treatment of accelerometry data for children. As an output for each participant, it provides: 1) Number of valid days of use; 2) Total wear time in minutes; 3) Average minutes and counts of each physical activity intensity level between days. It also calculates minutes and counts of each PA intensity level for midweek and weekend.
+
+Results are exported to a CSV file.
+
+## Table of contents
+1. R and RStudio (Chapter \@ref(RnRstudio))
+2. Required packages (Chapter \@ref(RnRstudio))
+3. How to use this code? (Chapter \@ref(RnRstudio))
+

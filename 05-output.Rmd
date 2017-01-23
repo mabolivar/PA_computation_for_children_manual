@@ -1,0 +1,65 @@
+# Script output
+
+## Log file
+
+The R code will generate a file named *log.txt* and a .csv file with the result of the analysis. On one hand, the *log.txt* file presents all the the information of the run. The following is an example for four .agd files:
+
+	A1109_10459_201307181sec.agd........OK
+	A1110_10488_201307181sec.agd........OK  
+	A1111_10482_201307181sec.agd........SKIPPED (Wrong epoch) 
+	A1112_10483_201307181sec.agd........OK
+
+## Codebook
+
+On the other hand, each row of the .csv file contains the aggregate information of one .agd file (i.e one participant). The variables are generated as follows:
+
+- **PID**: Participant ID
+- **valid**: At least 4 days with 10+ hours of wake/wear time, including 1 valid weekend day
+- **valdays**: Number of days with 10+ hours of wake/wear time
+- **valwkdays**: Number of WEEKDAYS with 10+ hours of wake/wear time
+- **valwkend**: Number of WEEKEND DAYS with 10+ hours of wake/wear time
+- **allMeanWakeWear**: Mean wake/wear time (mins) per day from all valid days
+- **allMeanSleepNW**: Mean sleep and non-wear (mins) per day from all valid days
+- **allmean\_mv\_EV**: Mean duration (mins) of (Evenson) MVPA per day
+- **allmean\_cntmv\_EV**: Mean daily total intensity counts in (Evenson) MVPA
+- **allmean\_v\_EV**: Mean duration (mins) of (Evenson) vigorous activity per day
+- **allmean\_cntv\_EV**: Mean daily total intensity counts in (Evenson) vigorous
+- **allmean\_m\_EV**: Mean duration (mins) of (Evenson) moderate activity per day
+- **allmean\_cntm\_EV**: Mean daily total intensity counts in (Evenson) moderate
+- **allmean\_l\_EV**: Mean duration (mins) of (Evenson) light activity per day
+- **allmean\_cntl\_EV**: Mean daily total intensity counts in (Evenson) light
+- **allmean\_s\_EV**: Mean duration (mins) of (Evenson) sedentary per day
+- **allmean\_cnts\_EV**: Mean daily total intensity counts in (Evenson) sedentary
+- **allMeanActCounts**: Mean daily total intensity counts
+- **allMeanIntenPerMin**: Mean intensity count per minute
+- **WKDAYMeanWakeWear**: Mean wake/wear time (mins) per day from all valid WEEKDAYS
+- **WKDAYMeanSleepNW**: Mean sleep and non-wear (mins) per day from all valid WEEKDAYS
+- **WKDAYmean\_mv\_EV**: Mean duration of (Evenson) MVPA per WEEKDAY
+- **WKDAYmean\_cntmv\_EV**: Mean daily total intensity counts in (Evenson) MVPA per WEEKDAY
+- **WKDAYmean\_v\_EV**: Mean duration of (Evenson) vigorous activity per WEEKDAY
+- **WKDAYmean\_cntv\_EV**: Mean daily total intensity counts in (Evenson) vigorous per WEEKDAY
+- **WKDAYmean\_m\_EV**: Mean duration of (Evenson) moderate activity per WEEKDAY
+- **WKDAYmean\_cntm\_EV**: Mean daily total intensity counts in (Evenson) moderate per WEEKDAY
+- **WKDAYmean\_l\_EV**: Mean duration of (Evenson) light activity per WEEKDAY
+- **WKDAYmean\_cntl\_EV**: Mean daily total intensity counts in (Evenson) light per WEEKDAY
+- **WKDAYmean\_s\_EV**: Mean duration of (Evenson) sedentary per WEEKDAY
+- **WKDAYmean\_cnts\_EV**: Mean daily total intensity counts in (Evenson) sedentary per WEEKDAY
+- **WKDAYMeanActCounts**: Mean daily total intensity counts from WEEKDAYS
+- **WKDAYMeanIntenPerMin**: Mean intensity count per minute from WEEKDAYS
+- **WKENDMeanWakeWear**: Mean wake/wear time (mins) per day from all valid WEEKEND DAYS
+- **WKENDMeanSleepNW**: Mean sleep and non-wear (mins) per day from all valid WEEKEND DAYS
+- **WKENDmean\_mv\_EV**: Mean duration of (Evenson) MVPA per WEEKEND DAY
+- **WKENDmean\_cntmv\_EV**: Mean daily total intensity counts in (Evenson) MVPA per WEEKEND DAY
+- **WKENDmean\_v\_EV**: Mean duration of (Evenson) vigorous activity per WEEKEND DAY
+- **WKENDmean\_cntv\_EV**: Mean daily total intensity counts in (Evenson) vigorous per WEEKEND DAY
+- **WKENDmean\_m\_EV**: Mean duration of (Evenson) moderate activity per WEEKEND DAY
+- **WKENDmean\_cntm\_EV**: Mean daily total intensity counts in (Evenson) moderate per WEEKEND DAY
+- **WKENDmean\_l\_EV**: Mean duration of (Evenson) light activity per WEEKEND DAY
+- **WKENDmean\_cntl\_EV**: Mean daily total intensity counts in (Evenson) light per WEEKEND DAY
+- **WKENDmean\_s\_EV**: Mean duration of (Evenson) sedentary per WEEKEND DAY
+- **WKENDmean\_cnts\_EV**: Mean daily total intensity counts in (Evenson) sedentary per WEEKEND DAY
+- **WKENDMeanActCounts**: Mean daily total intensity counts from WEEKEND DAYS
+- **WKENDMeanIntenPerMin**: Mean intensity count per minute from WEEKEND DAYS
+
+
+

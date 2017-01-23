@@ -1,0 +1,29 @@
+# R and RStudio {#RnRstudio}
+
+##R
+R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS. To download R, please choose your preferred Comprehensive R Archive Network (CRAN) mirror:
+
+- [University of California, Los Angeles, CA](http://cran.stat.ucla.edu/)
+- [National Cancer Institute, Bethesda, MD](http://watson.nci.nih.gov/cran_mirror/)
+- [Michigan Technological University, Houghton, MI](http://cran.mtu.edu/)
+- [Washington University, St. Louis, MO](http://cran.wustl.edu/)
+- [Case Western Reserve University, Cleveland, OH](http://cran.case.edu/)
+- [Statlib, Carnegie Mellon University, Pittsburgh, PA](http://lib.stat.cmu.edu/R/CRAN/)
+- [National Institute for Computational Sciences, Oak Ridge, TN](http://mirrors.nics.utk.edu/cran/)
+- [Revolution Analytics, Dallas, TX](http://cran.revolutionanalytics.com)
+- [Fred Hutchinson Cancer Research Center, Seattle, WA](http://cran.fhcrc.org/)
+- [Western Washington University, Bellingham, WA](http://cran.cs.wwu.edu/)
+
+##RStudio
+RStudio is a free and open source integrated development environment for R (See Figure \@ref(fig:RstudioIDE)). It is not required to run or develop code in R but it is a useful tool to do it. 
+
+```{r RstudioIDE, fig.cap='RStudio IDE', out.width='80%', fig.asp=.75, fig.align='center', echo = FALSE}
+knitr::include_graphics("images/rstudio-windows.png")
+```
+
+For further information about RStudio, the reader may refer to RStudio [webpage](http://www.rstudio.com/). You can download the RStudio installer from the following links:
+
+- [RStudio 0.98.484 - Windows XP/Vista/7/8](http://download1.rstudio.org/RStudio-0.98.484.exe)
+- [RStudio 0.98.484 - Mac OS X 10.6+ (64-bit)](http://download1.rstudio.org/RStudio-0.98.484.dmg)
+
+

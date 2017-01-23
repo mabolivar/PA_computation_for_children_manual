@@ -1,0 +1,137 @@
+# How to use this code?
+In order to use the code, the R file ***ac\_protocol.R*** have to be edited. The code holds five important components: *Working directory*, *Required libraries*, *Functions*, *Global parameters* and *Main routine*. In this section, the description of those components is presented.
+
+##Set the working directory
+The working directory (wd) is the folder which stores the R code, the input data and the code's output data. Likewise, the wd folder must contain the following folders:
+
+ - **R**: The code is stored in this folder.
+ - **data**: Contains all the .agd files to be processed.
+ - **output**: The final data frame and a log will be stored in this folder.
+
+Line 5 sets the working directory.
+
+##Load required libraries
+Starting at line 9, the lines load all the required libraries. Those libraries must be installed before running the code; otherwise, an error message will be printed on Console. 
+
+    Error in library("Hmisc") : there is no package called ‘Hmisc’
+
+The reader may refer back to *Requiered libraries* section for more information.
+
+##Load functions
+From line 20 until 446, all the functions are declared. Those function must be loaded in the *Workspace* to run the main routine.
+
+##Set global parameters
+Before the main routine, a set of global parameters must be fixed.
+
+- **inputdir**: Input data folder directory.
+- **outputdir**: Output folder directory.
+- **outputfile**: Output .csv file name.
+- **packdir**: Pack file directory. This file must be a .xlsx file and must have the same format as in the example.
+- **sheets**: Sheets contained within the Pack file.
+
+##Load and run the main function
+In the main function, you should fix the values for the functions parameters. In the framework, the values defined as parameters are those described in the paper *Collection, Management and Treatment in the International Study of Children's Obesity, Lifestyle and Environment (ISCOLE)*; however, the reader is free to modify them as their needs.
+
+The main function is composed of nine blocks:
+
+### Read data form the .agd files (SQLite databases)
+
+The following block reads the database (.agd file) using the file directory `dbDir` and save the accelerometry data on the variable `data` and all the settings parameters on the variable `settings`.
+
+    db <- readDatabase(dbDir)
+    data <- db$data
+    settings <- db$settings
+
+### Quality control checks
+
+This line performs all the quality control checks and receives as parameters the file directory, the accelerometry data, the settings and the pack data frame.
+
+	valid <- qualityControlCheck(dbDir,data, settings, pack)
+
+### Data aggregation
+
+In this block the data is aggregated in 15sec epoch and 60sec epoch. In addition, an activity column is added to both data frames (all epochs are marked as "wear/wake").
+
+	data15 <- aggregation(15, data)
+    data60 <- aggregation(60, data)
+    data15$activity <- rep("wear",nrow(data15)) #Activity (sleep, non-wear, wear/wake)
+    data60$activity <- rep("wear",nrow(data60)) #Activity (sleep, non-wear, wear/wake)
+
+### Sleep period identification
+	
+The function `sleepPeriods` identifies all the sleep periods and the non-wear periods within the sleep periods. As output, it returns a list with the sleep and non-wear periods. This function receives as parameter:
+		
+- **data:** The data frame to identified the sleep periods (if epoch < 60sec, the data is aggregate to 60sec epoch).
+- **sleepOnsetHours:** Range of day hours in which a sleep period can start.
+- **bedTimemin:** Number of consecutive minutes to start a sleep period.
+- **minSleepTime:** Minimum sleep period length (in minutes).
+- **tolMatrix:** Tolerance matrix. Consecutive minutes of non-sleep to declare the end of a sleep period. The minutes may differ between range of hours.
+- **tolBsleepMatrix:** Tolerance matrix before identifying a sleep period. Consecutive minutes of non-sleep to declare the end of a sleep period. The minutes may differ between range of hours.
+- **scanParam:** Scan parameter to identify the sleep minutes using Sadeh et al. (1994) algorithm (axis1, axis2, axis3 or vm).
+- **nonWearPSleep:** Boolean parameter. If TRUE -> non-wear periods are identified within the sleep periods;otherwise, non-wear periods within the sleep periods are not identified.
+- **nonWearscanParam:** Scan parameter to identify the non-wear periods within sleep periods (axis1, axis2, axis3 or vm).
+- **nonWearInact:** Minimum non-wear period length (in minutes).
+- **nonWearTol:** Maximum minutes of activity (i.e. counts per minute > 0) to declare the end of a non-wear period.
+- **overlap\_frac:** Fraction of time to declare a sleep period a non-wear period. If the overlap_frac of a sleep period is identified as non-wear, the sleep period is marked as non-wear.
+
+Additionally, the function `setActivity()` adds the activity label to the *activity* column between the intervals in the data frame given as parameter.
+
+	sleep <- sleepPeriods(data=data60,sleepOnsetHours= c(19,5),
+						bedTimemin = 5,
+						minSleepTime = 160,
+						tolMatrix = matrix(c(0,5,20,
+                                             5,19,10,
+                                             19,24,20),3,3,byrow=T),
+                        tolBsleepMatrix = matrix(c(0,24,10),1,3,byrow=T),
+                        scanParam = "axis1",
+                        nonWearPSleep = T, nonWearscanParam = "axis1",nonWearInact = 90, 
+						nonWearTol = 2,
+                        overlap_frac = 0.9)
+	 data60 <- setActivity(label="sleep",intv=sleep$sleep,data60)
+	 data60 <- setActivity(label="non-wear",intv=sleep$sleepnw,data60)
+
+### Non-wear period identification
+
+In this block the non-wear periods are identified over the unlabeled minutes. The function `nonWearPeriods()` receives as parameter the data frame, the scan parameter used to identify the non-wear periods, the minimum number of minutes to identify a non-wear period and the tolerance.
+
+    nWP <- nonWearPeriods(data60, scanParam="axis1",innactivity=20,tolerance=0) #nonWearPeriods. Innactivity and tolerance in minutes
+    data60 <- setActivity("non-wear",nWP,data60)
+
+### Wear periods check
+
+The following function search for count per epoch greater than the `maxcpm` parameter. Those epoch are labeled as invalid. Furthermore, the first minutes of the first day of the sample are labeled as "sleep".
+
+	data60 <- checkWearPeriods(data60,maxcpm = 20000)
+
+### Cleaning (Remove last day of data and more than 7 days of data)
+
+The function `removeData()` deletes the days/hours/minutes/seconds (given as parameter) from the data frame.
+
+	udays <- unique(as.Date(data60$datetime))
+    firstday <- min(udays)
+    lastday <- max(udays)
+    validdays <- seq(firstday,firstday+6,by=1) 
+    daystoremove <- udays[!(udays%in%validdays)]
+    data15 <- removeData(data15,toremove=c(daystoremove,lastday),units="days") 
+    data60 <- removeData(data60,toremove=c(daystoremove,lastday),units="days") 
+
+### Add intensity physical activity
+
+This block performs two procedures. 1) Add the activity column from the 60sec epoch data frame to the 15sec epoch data frame. 2) Add the physical activity intensity to each epoch using evidence-based cut points. In this case, the Evenson et al. (2008) cut points are used.
+
+    data15 <- mergingActivity(data15,data60)
+    data15$intensityEV <- mapply(cut_points_evenson,epoch=15, data15$axis1)
+	   
+
+### Get the datafile observation for the final data frame (only wear periods)
+	
+Extract all the physical activity intensity related variables for each participant.
+	      
+	ob <- getobs(dbDir,data15, timeunit="min")
+
+
+For further information about the functions and their parameters, you can refer to the function documentation.
+
+
+
+*After compile and load all the fuctions into the* ***workspace*** *, run the function `main( )` to obtain the final data frame.*
