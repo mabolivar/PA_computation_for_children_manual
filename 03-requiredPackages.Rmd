@@ -1,4 +1,4 @@
-# Set everything up
+# Setting everything up {#setup}
 
 ## Project structure
 
