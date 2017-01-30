@@ -1,4 +1,4 @@
-# Script output
+# Script output {#output}
 
 ## Log file
 

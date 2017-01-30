@@ -1,7 +1,8 @@
 --- 
 title: "Physical activity calculator manual"
-author: "Epiandes"
-date: "`r Sys.Date()`"
+author: 
+- Manuel A. Bolivar (ma.bolivar643@uniandes.edu.co)
+- Olga Lucia Sarmiento (osarmien@uniandes.edu.co)
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
@@ -9,7 +10,7 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: rstudio/bookdown-demo
-description: "This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook."
+description: "This is a manual for processing children accelerometry data based on .agd files from ActiGraph."
 ---
 
 # Introduction {#intro}
@@ -20,6 +21,8 @@ Results are exported to a CSV file.
 
 ## Table of contents
 1. R and RStudio (Chapter \@ref(RnRstudio))
-2. Required packages (Chapter \@ref(RnRstudio))
-3. How to use this code? (Chapter \@ref(RnRstudio))
+2. Required packages (Chapter \@ref(requiredPackages))
+3. How to use this code? (Chapter \@ref(howto))
+4. Results (Chapter \@ref(output))
+5. Additional resources (Chapter \@ref(addresources))
 
