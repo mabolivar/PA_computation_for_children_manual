@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="addresources.html">
-
+<link rel="prev" href="RnRstudio.html">
+<link rel="next" href="howto.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -153,18 +153,51 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="final-words" class="section level1">
-<h1><span class="header-section-number">7</span> Final Words</h1>
-<p>If you required further information about the project, please contact Olga Lucia Sarmiento (<a href="mailto:osarmien@uniandes.edu.co">osarmien@uniandes.edu.co</a>) and for suggestions and questions about the content of this manual, please contact Manuel A. Bolivar (<a href="mailto:ma.bolivar643@uniandes.edu.co">ma.bolivar643@uniandes.edu.co</a>).</p>
+<div id="setup" class="section level1">
+<h1><span class="header-section-number">3</span> Setting everything up</h1>
+<div id="project-structure" class="section level2">
+<h2><span class="header-section-number">3.1</span> Project structure</h2>
+<p>In order to set all the required files and project, the reader should create a directory that contains the following elements.</p>
+<ul>
+<li><strong>R</strong> folder: The code is stored in this folder.
+<ul>
+<li><em>ADPP.R</em>: R script that contains all the required functions to process accelerometry data.</li>
+<li><em>MARA_ac_protocol.R</em>: R script that contains all the pipe for processing acelerometry data.</li>
+</ul></li>
+<li><strong>data</strong> folder: Contains all the .agd files to be processed.</li>
+<li><strong>output</strong> folder: The final data frame and a log will be stored in this folder.</li>
+</ul>
+</div>
+<div id="requiredPackages" class="section level2">
+<h2><span class="header-section-number">3.2</span> Required packages</h2>
+<p>In R, <em>Packages</em> are collections of R functions, data, and compiled code in a well-defined format. In order to execute the code, some packages are required and must be downloaded, installed and loaded prior to running the code.</p>
+<p>The required packages are:</p>
+<ul>
+<li><code>chron</code></li>
+<li><code>Hmisc</code></li>
+<li><code>RSQLite</code></li>
+<li><code>sqldf</code></li>
+<li><code>xlsx</code></li>
+</ul>
+<p>To install any package, you can use the built-in function:</p>
+<pre><code>install.packages(&lt;package_name&gt;)</code></pre>
+<p>Or, if you decided to install RStudio, this IDE provides easy tool to automatically download and install multiple packages at the same time. Under the Packages tab (bottom-right panel), you can see all your installed packages. There, you can use the “Install package” button to download and install the required packages. Figure <a href="setup.html#fig:installPack">3.1</a> image presents this dialog.</p>
+<div class="figure" style="text-align: center"><span id="fig:installPack"></span>
+<img src="images/Install_package_tool.jpg" alt="Install package dialog" width="50%" />
+<p class="caption">
+Figure 3.1: Install package dialog
+</p>
+</div>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="addresources.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="RnRstudio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="howto.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

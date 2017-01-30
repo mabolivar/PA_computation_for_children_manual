@@ -33,7 +33,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="set-everything-up.html">
+<link rel="prev" href="setup.html">
 <link rel="next" href="output.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -107,9 +107,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.1" data-path="RnRstudio.html"><a href="RnRstudio.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
 <li class="chapter" data-level="2.2" data-path="RnRstudio.html"><a href="RnRstudio.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="set-everything-up.html"><a href="set-everything-up.html"><i class="fa fa-check"></i><b>3</b> Set everything up</a><ul>
-<li class="chapter" data-level="3.1" data-path="set-everything-up.html"><a href="set-everything-up.html#project-structure"><i class="fa fa-check"></i><b>3.1</b> Project structure</a></li>
-<li class="chapter" data-level="3.2" data-path="set-everything-up.html"><a href="set-everything-up.html#requiredPackages"><i class="fa fa-check"></i><b>3.2</b> Required packages</a></li>
+<li class="chapter" data-level="3" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>3</b> Setting everything up</a><ul>
+<li class="chapter" data-level="3.1" data-path="setup.html"><a href="setup.html#project-structure"><i class="fa fa-check"></i><b>3.1</b> Project structure</a></li>
+<li class="chapter" data-level="3.2" data-path="setup.html"><a href="setup.html#requiredPackages"><i class="fa fa-check"></i><b>3.2</b> Required packages</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="howto.html"><a href="howto.html"><i class="fa fa-check"></i><b>4</b> How to use this code?</a><ul>
 <li class="chapter" data-level="4.1" data-path="howto.html"><a href="howto.html#set-the-working-directory"><i class="fa fa-check"></i><b>4.1</b> Set the working directory</a></li>
@@ -170,7 +170,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">4.2</span> Load required libraries</h2>
 <p>In <code>Load libraries</code> section, the lines load all the required libraries. Those libraries must be installed before running the code; otherwise, an error message will be printed on Console.</p>
 <pre><code>Error in library(&quot;Hmisc&quot;) : there is no package called ‘Hmisc’</code></pre>
-<p>The reader may refer back to <a href="set-everything-up.html#requiredPackages">3.2</a> section for more information.</p>
+<p>The reader may refer back to <a href="setup.html#requiredPackages">3.2</a> section for more information.</p>
 </div>
 <div id="load-functions" class="section level2">
 <h2><span class="header-section-number">4.3</span> Load functions</h2>
@@ -194,22 +194,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="read-data-form-the-.agd-files-sqlite-databases" class="section level3">
 <h3><span class="header-section-number">4.5.1</span> Read data form the .agd files (SQLite databases)</h3>
 <p>The following block reads the database (.agd file) using the file directory <code>dbDir</code> and save the accelerometry data on the variable <code>data</code> and all the settings parameters on the variable <code>settings</code>.</p>
-<pre><code>db &lt;- readDatabase(dbDir)
-data &lt;- db$data
-settings &lt;- db$settings</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    db &lt;-<span class="st"> </span><span class="kw">readDatabase</span>(dbDir)
+    data &lt;-<span class="st"> </span>db$data
+    settings &lt;-<span class="st"> </span>db$settings</code></pre></div>
 </div>
 <div id="quality-control-checks" class="section level3">
 <h3><span class="header-section-number">4.5.2</span> Quality control checks</h3>
 <p>This line performs all the quality control checks and receives as parameters the file directory, the accelerometry data, the settings and the pack data frame.</p>
-<pre><code>valid &lt;- qualityControlCheck(dbDir,data, settings, pack)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    valid &lt;-<span class="st"> </span><span class="kw">qualityControlCheck</span>(dbDir,data, settings, pack)</code></pre></div>
 </div>
 <div id="data-aggregation" class="section level3">
 <h3><span class="header-section-number">4.5.3</span> Data aggregation</h3>
 <p>In this block the data is aggregated in 15sec epoch and 60sec epoch. In addition, an activity column is added to both data frames (all epochs are marked as “wear/wake”).</p>
-<pre><code>data15 &lt;- aggregation(15, data)
-data60 &lt;- aggregation(60, data)
-data15$activity &lt;- rep(&quot;wear&quot;,nrow(data15)) #Activity (sleep, non-wear, wear/wake)
-data60$activity &lt;- rep(&quot;wear&quot;,nrow(data60)) #Activity (sleep, non-wear, wear/wake)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    data15 &lt;-<span class="st"> </span><span class="kw">aggregation</span>(<span class="dv">15</span>, data)
+    data60 &lt;-<span class="st"> </span><span class="kw">aggregation</span>(<span class="dv">60</span>, data)
+    data15$activity &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;wear&quot;</span>,<span class="kw">nrow</span>(data15)) <span class="co">#Activity (sleep, non-wear, wear/wake)</span>
+    data60$activity &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;wear&quot;</span>,<span class="kw">nrow</span>(data60)) <span class="co">#Activity (sleep, non-wear, wear/wake)</span></code></pre></div>
 </div>
 <div id="sleep-period-identification" class="section level3">
 <h3><span class="header-section-number">4.5.4</span> Sleep period identification</h3>
@@ -229,53 +229,52 @@ data60$activity &lt;- rep(&quot;wear&quot;,nrow(data60)) #Activity (sleep, non-w
 <li><strong>overlap_frac:</strong> Fraction of time to declare a sleep period a non-wear period. If the overlap_frac of a sleep period is identified as non-wear, the sleep period is marked as non-wear.</li>
 </ul>
 <p>Additionally, the function <code>setActivity()</code> adds the activity label to the <em>activity</em> column between the intervals in the data frame given as parameter.</p>
-<pre><code>sleep &lt;- sleepPeriods(data=data60,sleepOnsetHours= c(19,5),
-                    bedTimemin = 5,
-                    minSleepTime = 160,
-                    tolMatrix = matrix(c(0,5,20,
-                                         5,19,10,
-                                         19,24,20),3,3,byrow=T),
-                    tolBsleepMatrix = matrix(c(0,24,10),1,3,byrow=T),
-                    scanParam = &quot;axis1&quot;,
-                    nonWearPSleep = T, nonWearscanParam = &quot;axis1&quot;,nonWearInact = 90, 
-                    nonWearTol = 2,
-                    overlap_frac = 0.9)
- data60 &lt;- setActivity(label=&quot;sleep&quot;,intv=sleep$sleep,data60)
- data60 &lt;- setActivity(label=&quot;non-wear&quot;,intv=sleep$sleepnw,data60)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    sleep &lt;-<span class="st"> </span><span class="kw">sleepPeriods</span>(<span class="dt">data=</span>data60,<span class="dt">sleepOnsetHours=</span> <span class="kw">c</span>(<span class="dv">19</span>,<span class="dv">5</span>),
+                        <span class="dt">bedTimemin =</span> <span class="dv">5</span>,
+                        <span class="dt">minSleepTime =</span> <span class="dv">160</span>,
+                        <span class="dt">tolMatrix =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">20</span>,
+                                             <span class="dv">5</span>,<span class="dv">19</span>,<span class="dv">10</span>,
+                                             <span class="dv">19</span>,<span class="dv">24</span>,<span class="dv">20</span>),<span class="dv">3</span>,<span class="dv">3</span>,<span class="dt">byrow=</span>T),
+                        <span class="dt">tolBsleepMatrix =</span> <span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">24</span>,<span class="dv">10</span>),<span class="dv">1</span>,<span class="dv">3</span>,<span class="dt">byrow=</span>T),
+                        <span class="dt">scanParam =</span> <span class="st">&quot;axis1&quot;</span>,
+                        <span class="dt">nonWearPSleep =</span> T, <span class="dt">nonWearscanParam =</span> <span class="st">&quot;axis1&quot;</span>,<span class="dt">nonWearInact =</span> <span class="dv">90</span>, 
+                        <span class="dt">nonWearTol =</span> <span class="dv">2</span>,
+                        <span class="dt">overlap_frac =</span> <span class="fl">0.9</span>)
+     data60 &lt;-<span class="st"> </span><span class="kw">setActivity</span>(<span class="dt">label=</span><span class="st">&quot;sleep&quot;</span>,<span class="dt">intv=</span>sleep$sleep,data60)
+     data60 &lt;-<span class="st"> </span><span class="kw">setActivity</span>(<span class="dt">label=</span><span class="st">&quot;non-wear&quot;</span>,<span class="dt">intv=</span>sleep$sleepnw,data60)</code></pre></div>
 </div>
 <div id="non-wear-period-identification" class="section level3">
 <h3><span class="header-section-number">4.5.5</span> Non-wear period identification</h3>
 <p>In this block the non-wear periods are identified over the unlabeled minutes. The function <code>nonWearPeriods()</code> receives as parameter the data frame, the scan parameter used to identify the non-wear periods, the minimum number of minutes to identify a non-wear period and the tolerance.</p>
-<pre><code>nWP &lt;- nonWearPeriods(data60, scanParam=&quot;axis1&quot;,innactivity=20,tolerance=0) #nonWearPeriods. Innactivity and tolerance in minutes
-data60 &lt;- setActivity(&quot;non-wear&quot;,nWP,data60)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    nWP &lt;-<span class="st"> </span><span class="kw">nonWearPeriods</span>(data60, <span class="dt">scanParam=</span><span class="st">&quot;axis1&quot;</span>,<span class="dt">innactivity=</span><span class="dv">20</span>,<span class="dt">tolerance=</span><span class="dv">0</span>) <span class="co">#nonWearPeriods. Innactivity and tolerance in minutes</span>
+    data60 &lt;-<span class="st"> </span><span class="kw">setActivity</span>(<span class="st">&quot;non-wear&quot;</span>,nWP,data60)</code></pre></div>
 </div>
 <div id="wear-periods-check" class="section level3">
 <h3><span class="header-section-number">4.5.6</span> Wear periods check</h3>
 <p>The following function search for count per epoch greater than the <code>maxcpm</code> parameter. Those epoch are labeled as invalid. Furthermore, the first minutes of the first day of the sample are labeled as “sleep”.</p>
-<pre><code>data60 &lt;- checkWearPeriods(data60,maxcpm = 20000)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    data60 &lt;-<span class="st"> </span><span class="kw">checkWearPeriods</span>(data60,<span class="dt">maxcpm =</span> <span class="dv">20000</span>)</code></pre></div>
 </div>
 <div id="cleaning-remove-last-day-of-data-and-more-than-7-days-of-data" class="section level3">
 <h3><span class="header-section-number">4.5.7</span> Cleaning (Remove last day of data and more than 7 days of data)</h3>
 <p>The function <code>removeData()</code> deletes the days/hours/minutes/seconds (given as parameter) from the data frame.</p>
-<pre><code>udays &lt;- unique(as.Date(data60$datetime))
-firstday &lt;- min(udays)
-lastday &lt;- max(udays)
-validdays &lt;- seq(firstday,firstday+6,by=1) 
-daystoremove &lt;- udays[!(udays%in%validdays)]
-data15 &lt;- removeData(data15,toremove=c(daystoremove,lastday),units=&quot;days&quot;) 
-data60 &lt;- removeData(data60,toremove=c(daystoremove,lastday),units=&quot;days&quot;) </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    udays &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">as.Date</span>(data60$datetime))
+    firstday &lt;-<span class="st"> </span><span class="kw">min</span>(udays)
+    lastday &lt;-<span class="st"> </span><span class="kw">max</span>(udays)
+    validdays &lt;-<span class="st"> </span><span class="kw">seq</span>(firstday,firstday<span class="dv">+6</span>,<span class="dt">by=</span><span class="dv">1</span>) 
+    daystoremove &lt;-<span class="st"> </span>udays[!(udays%in%validdays)]
+    data15 &lt;-<span class="st"> </span><span class="kw">removeData</span>(data15,<span class="dt">toremove=</span><span class="kw">c</span>(daystoremove,lastday),<span class="dt">units=</span><span class="st">&quot;days&quot;</span>) 
+    data60 &lt;-<span class="st"> </span><span class="kw">removeData</span>(data60,<span class="dt">toremove=</span><span class="kw">c</span>(daystoremove,lastday),<span class="dt">units=</span><span class="st">&quot;days&quot;</span>) </code></pre></div>
 </div>
 <div id="add-intensity-physical-activity" class="section level3">
 <h3><span class="header-section-number">4.5.8</span> Add intensity physical activity</h3>
 <p>This block performs two procedures. 1) Add the activity column from the 60sec epoch data frame to the 15sec epoch data frame. 2) Add the physical activity intensity to each epoch using evidence-based cut points. In this case, the Evenson et al. (2008) cut points are used.</p>
-<pre><code>data15 &lt;- mergingActivity(data15,data60)
-data15$intensityEV &lt;- mapply(cut_points_evenson,epoch=15, data15$axis1)
-   </code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    data15 &lt;-<span class="st"> </span><span class="kw">mergingActivity</span>(data15,data60)
+    data15$intensityEV &lt;-<span class="st"> </span><span class="kw">mapply</span>(cut_points_evenson,<span class="dt">epoch=</span><span class="dv">15</span>, data15$axis1)</code></pre></div>
 </div>
 <div id="get-the-datafile-observation-for-the-final-data-frame-only-wear-periods" class="section level3">
 <h3><span class="header-section-number">4.5.9</span> Get the datafile observation for the final data frame (only wear periods)</h3>
 <p>Extract all the physical activity intensity related variables for each participant.</p>
-<pre><code>ob &lt;- getobs(dbDir,data15, timeunit=&quot;min&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">    ob &lt;-<span class="st"> </span><span class="kw">getobs</span>(dbDir,data15, <span class="dt">timeunit=</span><span class="st">&quot;min&quot;</span>)</code></pre></div>
 <p>For further information about the functions and their parameters, you can refer to the function documentation.</p>
 <p><em>After compile and load all the fuctions into the</em> <strong><em>workspace</em></strong> <em>, run the function <code>main( )</code> to obtain the final data frame.</em></p>
 
@@ -287,7 +286,7 @@ data15$intensityEV &lt;- mapply(cut_points_evenson,epoch=15, data15$axis1)
           </div>
         </div>
       </div>
-<a href="set-everything-up.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="output.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
