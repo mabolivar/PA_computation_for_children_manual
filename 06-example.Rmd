@@ -1,7 +1,17 @@
-# Extra
+# Additional resources {#addresources}
 
-## Multiple files
+## Multiple folder source
 
-## Analyzing outout
+Due to project organization, the user might requiered to use multiple folders as data sources. Therefore, the user is encorage to create their own copy of *MARA_ac_protocol.R* to process multiple folders. However, the user can also refer to *MARA_ac_protocol_multiple_folders.R* to process multiple files located in different folders (but all of them should share the same folder root).
 
-## Example
+The user only requires to specify the root folder as the `inputdir` parameter in the  *MARA_ac_protocol_multiple_folders.R* R script.
+
+```{r,eval=F}
+main <- function(){
+  inputdir <- "E:\\MUEVETE ESCOLAR"
+  outputdir <- ".\\output"
+  outputfile <- paste("COL MUEVETE",as.Date(Sys.time()),".csv", sep="")
+  ...
+}
+```
+

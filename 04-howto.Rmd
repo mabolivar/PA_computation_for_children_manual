@@ -1,4 +1,5 @@
-# How to use this code?
+# How to use this code? {#howto}
+
 In order to use the code, the R file ***ac\_protocol.R*** have to be edited. The code holds five important components: *Working directory*, *Required libraries*, *Functions*, *Global parameters* and *Main routine*. In this section, the description of those components is presented.
 
 ##Set the working directory
@@ -8,17 +9,18 @@ The working directory (wd) is the folder which stores the R code, the input data
  - **data**: Contains all the .agd files to be processed.
  - **output**: The final data frame and a log will be stored in this folder.
 
-Line 5 sets the working directory.
+The `Working directory` section sets the working directory.
 
 ##Load required libraries
-Starting at line 9, the lines load all the required libraries. Those libraries must be installed before running the code; otherwise, an error message will be printed on Console. 
+
+In `Load libraries` section, the lines load all the required libraries. Those libraries must be installed before running the code; otherwise, an error message will be printed on Console. 
 
     Error in library("Hmisc") : there is no package called ‘Hmisc’
 
-The reader may refer back to *Requiered libraries* section for more information.
+The reader may refer back to \@ref(requiredPackages) section for more information.
 
 ##Load functions
-From line 20 until 446, all the functions are declared. Those function must be loaded in the *Workspace* to run the main routine.
+In the `Functions` section all the functions are declared. Those function must be loaded in the *Workspace* to run the main routine.
 
 ##Set global parameters
 Before the main routine, a set of global parameters must be fixed.

@@ -7,26 +7,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Physical activity calculator manual</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="description" content="This is a manual for processing children accelerometry data based on .agd files from ActiGraph.">
   <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="Physical activity calculator manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is a manual for processing children accelerometry data based on .agd files from ActiGraph." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Physical activity calculator manual" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a manual for processing children accelerometry data based on .agd files from ActiGraph." />
   
 
-<meta name="author" content="Epiandes">
+<meta name="author" content="Manuel A. Bolivar (ma.bolivar643@uniandes.edu.co)">
+<meta name="author" content="Olga Lucia Sarmiento (osarmien@uniandes.edu.co)">
 
 
-<meta name="date" content="2017-01-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
   
   
 <link rel="prev" href="index.html">
-<link rel="next" href="required-packages.html">
+<link rel="next" href="set-everything-up.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -51,6 +51,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 </head>
 
@@ -70,35 +107,35 @@
 <li class="chapter" data-level="2.1" data-path="RnRstudio.html"><a href="RnRstudio.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
 <li class="chapter" data-level="2.2" data-path="RnRstudio.html"><a href="RnRstudio.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="required-packages.html"><a href="required-packages.html"><i class="fa fa-check"></i><b>3</b> Required packages</a></li>
-<li class="chapter" data-level="4" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html"><i class="fa fa-check"></i><b>4</b> How to use this code?</a><ul>
-<li class="chapter" data-level="4.1" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#set-the-working-directory"><i class="fa fa-check"></i><b>4.1</b> Set the working directory</a></li>
-<li class="chapter" data-level="4.2" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#load-required-libraries"><i class="fa fa-check"></i><b>4.2</b> Load required libraries</a></li>
-<li class="chapter" data-level="4.3" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#load-functions"><i class="fa fa-check"></i><b>4.3</b> Load functions</a></li>
-<li class="chapter" data-level="4.4" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#set-global-parameters"><i class="fa fa-check"></i><b>4.4</b> Set global parameters</a></li>
-<li class="chapter" data-level="4.5" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#load-and-run-the-main-function"><i class="fa fa-check"></i><b>4.5</b> Load and run the main function</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#read-data-form-the-.agd-files-sqlite-databases"><i class="fa fa-check"></i><b>4.5.1</b> Read data form the .agd files (SQLite databases)</a></li>
-<li class="chapter" data-level="4.5.2" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#quality-control-checks"><i class="fa fa-check"></i><b>4.5.2</b> Quality control checks</a></li>
-<li class="chapter" data-level="4.5.3" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#data-aggregation"><i class="fa fa-check"></i><b>4.5.3</b> Data aggregation</a></li>
-<li class="chapter" data-level="4.5.4" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#sleep-period-identification"><i class="fa fa-check"></i><b>4.5.4</b> Sleep period identification</a></li>
-<li class="chapter" data-level="4.5.5" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#non-wear-period-identification"><i class="fa fa-check"></i><b>4.5.5</b> Non-wear period identification</a></li>
-<li class="chapter" data-level="4.5.6" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#wear-periods-check"><i class="fa fa-check"></i><b>4.5.6</b> Wear periods check</a></li>
-<li class="chapter" data-level="4.5.7" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#cleaning-remove-last-day-of-data-and-more-than-7-days-of-data"><i class="fa fa-check"></i><b>4.5.7</b> Cleaning (Remove last day of data and more than 7 days of data)</a></li>
-<li class="chapter" data-level="4.5.8" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#add-intensity-physical-activity"><i class="fa fa-check"></i><b>4.5.8</b> Add intensity physical activity</a></li>
-<li class="chapter" data-level="4.5.9" data-path="how-to-use-this-code.html"><a href="how-to-use-this-code.html#get-the-datafile-observation-for-the-final-data-frame-only-wear-periods"><i class="fa fa-check"></i><b>4.5.9</b> Get the datafile observation for the final data frame (only wear periods)</a></li>
+<li class="chapter" data-level="3" data-path="set-everything-up.html"><a href="set-everything-up.html"><i class="fa fa-check"></i><b>3</b> Set everything up</a><ul>
+<li class="chapter" data-level="3.1" data-path="set-everything-up.html"><a href="set-everything-up.html#project-structure"><i class="fa fa-check"></i><b>3.1</b> Project structure</a></li>
+<li class="chapter" data-level="3.2" data-path="set-everything-up.html"><a href="set-everything-up.html#requiredPackages"><i class="fa fa-check"></i><b>3.2</b> Required packages</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="howto.html"><a href="howto.html"><i class="fa fa-check"></i><b>4</b> How to use this code?</a><ul>
+<li class="chapter" data-level="4.1" data-path="howto.html"><a href="howto.html#set-the-working-directory"><i class="fa fa-check"></i><b>4.1</b> Set the working directory</a></li>
+<li class="chapter" data-level="4.2" data-path="howto.html"><a href="howto.html#load-required-libraries"><i class="fa fa-check"></i><b>4.2</b> Load required libraries</a></li>
+<li class="chapter" data-level="4.3" data-path="howto.html"><a href="howto.html#load-functions"><i class="fa fa-check"></i><b>4.3</b> Load functions</a></li>
+<li class="chapter" data-level="4.4" data-path="howto.html"><a href="howto.html#set-global-parameters"><i class="fa fa-check"></i><b>4.4</b> Set global parameters</a></li>
+<li class="chapter" data-level="4.5" data-path="howto.html"><a href="howto.html#load-and-run-the-main-function"><i class="fa fa-check"></i><b>4.5</b> Load and run the main function</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="howto.html"><a href="howto.html#read-data-form-the-.agd-files-sqlite-databases"><i class="fa fa-check"></i><b>4.5.1</b> Read data form the .agd files (SQLite databases)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="howto.html"><a href="howto.html#quality-control-checks"><i class="fa fa-check"></i><b>4.5.2</b> Quality control checks</a></li>
+<li class="chapter" data-level="4.5.3" data-path="howto.html"><a href="howto.html#data-aggregation"><i class="fa fa-check"></i><b>4.5.3</b> Data aggregation</a></li>
+<li class="chapter" data-level="4.5.4" data-path="howto.html"><a href="howto.html#sleep-period-identification"><i class="fa fa-check"></i><b>4.5.4</b> Sleep period identification</a></li>
+<li class="chapter" data-level="4.5.5" data-path="howto.html"><a href="howto.html#non-wear-period-identification"><i class="fa fa-check"></i><b>4.5.5</b> Non-wear period identification</a></li>
+<li class="chapter" data-level="4.5.6" data-path="howto.html"><a href="howto.html#wear-periods-check"><i class="fa fa-check"></i><b>4.5.6</b> Wear periods check</a></li>
+<li class="chapter" data-level="4.5.7" data-path="howto.html"><a href="howto.html#cleaning-remove-last-day-of-data-and-more-than-7-days-of-data"><i class="fa fa-check"></i><b>4.5.7</b> Cleaning (Remove last day of data and more than 7 days of data)</a></li>
+<li class="chapter" data-level="4.5.8" data-path="howto.html"><a href="howto.html#add-intensity-physical-activity"><i class="fa fa-check"></i><b>4.5.8</b> Add intensity physical activity</a></li>
+<li class="chapter" data-level="4.5.9" data-path="howto.html"><a href="howto.html#get-the-datafile-observation-for-the-final-data-frame-only-wear-periods"><i class="fa fa-check"></i><b>4.5.9</b> Get the datafile observation for the final data frame (only wear periods)</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="script-output.html"><a href="script-output.html"><i class="fa fa-check"></i><b>5</b> Script output</a><ul>
-<li class="chapter" data-level="5.1" data-path="script-output.html"><a href="script-output.html#log-file"><i class="fa fa-check"></i><b>5.1</b> Log file</a></li>
-<li class="chapter" data-level="5.2" data-path="script-output.html"><a href="script-output.html#codebook"><i class="fa fa-check"></i><b>5.2</b> Codebook</a></li>
+<li class="chapter" data-level="5" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>5</b> Script output</a><ul>
+<li class="chapter" data-level="5.1" data-path="output.html"><a href="output.html#log-file"><i class="fa fa-check"></i><b>5.1</b> Log file</a></li>
+<li class="chapter" data-level="5.2" data-path="output.html"><a href="output.html#codebook"><i class="fa fa-check"></i><b>5.2</b> Codebook</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="extra.html"><a href="extra.html"><i class="fa fa-check"></i><b>6</b> Extra</a><ul>
-<li class="chapter" data-level="6.1" data-path="extra.html"><a href="extra.html#multiple-files"><i class="fa fa-check"></i><b>6.1</b> Multiple files</a></li>
-<li class="chapter" data-level="6.2" data-path="extra.html"><a href="extra.html#analyzing-outout"><i class="fa fa-check"></i><b>6.2</b> Analyzing outout</a></li>
-<li class="chapter" data-level="6.3" data-path="extra.html"><a href="extra.html#example"><i class="fa fa-check"></i><b>6.3</b> Example</a></li>
+<li class="chapter" data-level="6" data-path="addresources.html"><a href="addresources.html"><i class="fa fa-check"></i><b>6</b> Additional resources</a><ul>
+<li class="chapter" data-level="6.1" data-path="addresources.html"><a href="addresources.html#multiple-folder-source"><i class="fa fa-check"></i><b>6.1</b> Multiple folder source</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 </ul>
 
       </nav>
@@ -123,7 +160,6 @@
 <p>R is a free software environment for statistical computing and graphics. It compiles and runs on a wide variety of UNIX platforms, Windows and MacOS. To download R, please choose your preferred Comprehensive R Archive Network (CRAN) mirror:</p>
 <ul>
 <li><a href="http://cran.stat.ucla.edu/">University of California, Los Angeles, CA</a></li>
-<li><a href="http://watson.nci.nih.gov/cran_mirror/">National Cancer Institute, Bethesda, MD</a></li>
 <li><a href="http://cran.mtu.edu/">Michigan Technological University, Houghton, MI</a></li>
 <li><a href="http://cran.wustl.edu/">Washington University, St. Louis, MO</a></li>
 <li><a href="http://cran.case.edu/">Case Western Reserve University, Cleveland, OH</a></li>
@@ -145,8 +181,7 @@ Figure 2.1: RStudio IDE
 </div>
 <p>For further information about RStudio, the reader may refer to RStudio <a href="http://www.rstudio.com/">webpage</a>. You can download the RStudio installer from the following links:</p>
 <ul>
-<li><a href="http://download1.rstudio.org/RStudio-0.98.484.exe">RStudio 0.98.484 - Windows XP/Vista/7/8</a></li>
-<li><a href="http://download1.rstudio.org/RStudio-0.98.484.dmg">RStudio 0.98.484 - Mac OS X 10.6+ (64-bit)</a></li>
+<li><a href="https://www.rstudio.com/products/rstudio/download/">Download RStudio for Windows/Mac OS/Linux</a></li>
 </ul>
 
 </div>
@@ -157,7 +192,7 @@ Figure 2.1: RStudio IDE
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="required-packages.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="set-everything-up.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>

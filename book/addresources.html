@@ -7,33 +7,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Physical activity calculator manual</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook.">
+  <meta name="description" content="This is a manual for processing children accelerometry data based on .agd files from ActiGraph.">
   <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="Physical activity calculator manual" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta property="og:description" content="This is a manual for processing children accelerometry data based on .agd files from ActiGraph." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Physical activity calculator manual" />
   
-  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="twitter:description" content="This is a manual for processing children accelerometry data based on .agd files from ActiGraph." />
   
 
-<meta name="author" content="Epiandes">
+<meta name="author" content="Manuel A. Bolivar (ma.bolivar643@uniandes.edu.co)">
+<meta name="author" content="Olga Lucia Sarmiento (osarmien@uniandes.edu.co)">
 
 
-<meta name="date" content="2017-01-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="script-output.html">
+<link rel="prev" href="output.html">
 <link rel="next" href="final-words.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
@@ -100,18 +100,42 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="RnRstudio.html"><a href="RnRstudio.html"><i class="fa fa-check"></i><b>2</b> R and RStudio</a></li>
-<li class="chapter" data-level="3" data-path="set-everything-up.html"><a href="set-everything-up.html"><i class="fa fa-check"></i><b>3</b> Set everything up</a></li>
-<li class="chapter" data-level="4" data-path="howto.html"><a href="howto.html"><i class="fa fa-check"></i><b>4</b> How to use this code?</a></li>
-<li class="chapter" data-level="5" data-path="script-output.html"><a href="script-output.html"><i class="fa fa-check"></i><b>5</b> Script output</a></li>
-<li class="chapter" data-level="6" data-path="extra.html"><a href="extra.html"><i class="fa fa-check"></i><b>6</b> Extra</a><ul>
-<li class="chapter" data-level="6.1" data-path="extra.html"><a href="extra.html#multiple-folder-source"><i class="fa fa-check"></i><b>6.1</b> Multiple folder source</a></li>
-<li class="chapter" data-level="6.2" data-path="extra.html"><a href="extra.html#analyzing-outout"><i class="fa fa-check"></i><b>6.2</b> Analyzing outout</a></li>
-<li class="chapter" data-level="6.3" data-path="extra.html"><a href="extra.html#example"><i class="fa fa-check"></i><b>6.3</b> Example</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.1</b> Table of contents</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="RnRstudio.html"><a href="RnRstudio.html"><i class="fa fa-check"></i><b>2</b> R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="RnRstudio.html"><a href="RnRstudio.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
+<li class="chapter" data-level="2.2" data-path="RnRstudio.html"><a href="RnRstudio.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="set-everything-up.html"><a href="set-everything-up.html"><i class="fa fa-check"></i><b>3</b> Set everything up</a><ul>
+<li class="chapter" data-level="3.1" data-path="set-everything-up.html"><a href="set-everything-up.html#project-structure"><i class="fa fa-check"></i><b>3.1</b> Project structure</a></li>
+<li class="chapter" data-level="3.2" data-path="set-everything-up.html"><a href="set-everything-up.html#requiredPackages"><i class="fa fa-check"></i><b>3.2</b> Required packages</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="howto.html"><a href="howto.html"><i class="fa fa-check"></i><b>4</b> How to use this code?</a><ul>
+<li class="chapter" data-level="4.1" data-path="howto.html"><a href="howto.html#set-the-working-directory"><i class="fa fa-check"></i><b>4.1</b> Set the working directory</a></li>
+<li class="chapter" data-level="4.2" data-path="howto.html"><a href="howto.html#load-required-libraries"><i class="fa fa-check"></i><b>4.2</b> Load required libraries</a></li>
+<li class="chapter" data-level="4.3" data-path="howto.html"><a href="howto.html#load-functions"><i class="fa fa-check"></i><b>4.3</b> Load functions</a></li>
+<li class="chapter" data-level="4.4" data-path="howto.html"><a href="howto.html#set-global-parameters"><i class="fa fa-check"></i><b>4.4</b> Set global parameters</a></li>
+<li class="chapter" data-level="4.5" data-path="howto.html"><a href="howto.html#load-and-run-the-main-function"><i class="fa fa-check"></i><b>4.5</b> Load and run the main function</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="howto.html"><a href="howto.html#read-data-form-the-.agd-files-sqlite-databases"><i class="fa fa-check"></i><b>4.5.1</b> Read data form the .agd files (SQLite databases)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="howto.html"><a href="howto.html#quality-control-checks"><i class="fa fa-check"></i><b>4.5.2</b> Quality control checks</a></li>
+<li class="chapter" data-level="4.5.3" data-path="howto.html"><a href="howto.html#data-aggregation"><i class="fa fa-check"></i><b>4.5.3</b> Data aggregation</a></li>
+<li class="chapter" data-level="4.5.4" data-path="howto.html"><a href="howto.html#sleep-period-identification"><i class="fa fa-check"></i><b>4.5.4</b> Sleep period identification</a></li>
+<li class="chapter" data-level="4.5.5" data-path="howto.html"><a href="howto.html#non-wear-period-identification"><i class="fa fa-check"></i><b>4.5.5</b> Non-wear period identification</a></li>
+<li class="chapter" data-level="4.5.6" data-path="howto.html"><a href="howto.html#wear-periods-check"><i class="fa fa-check"></i><b>4.5.6</b> Wear periods check</a></li>
+<li class="chapter" data-level="4.5.7" data-path="howto.html"><a href="howto.html#cleaning-remove-last-day-of-data-and-more-than-7-days-of-data"><i class="fa fa-check"></i><b>4.5.7</b> Cleaning (Remove last day of data and more than 7 days of data)</a></li>
+<li class="chapter" data-level="4.5.8" data-path="howto.html"><a href="howto.html#add-intensity-physical-activity"><i class="fa fa-check"></i><b>4.5.8</b> Add intensity physical activity</a></li>
+<li class="chapter" data-level="4.5.9" data-path="howto.html"><a href="howto.html#get-the-datafile-observation-for-the-final-data-frame-only-wear-periods"><i class="fa fa-check"></i><b>4.5.9</b> Get the datafile observation for the final data frame (only wear periods)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>5</b> Script output</a><ul>
+<li class="chapter" data-level="5.1" data-path="output.html"><a href="output.html#log-file"><i class="fa fa-check"></i><b>5.1</b> Log file</a></li>
+<li class="chapter" data-level="5.2" data-path="output.html"><a href="output.html#codebook"><i class="fa fa-check"></i><b>5.2</b> Codebook</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="addresources.html"><a href="addresources.html"><i class="fa fa-check"></i><b>6</b> Additional resources</a><ul>
+<li class="chapter" data-level="6.1" data-path="addresources.html"><a href="addresources.html#multiple-folder-source"><i class="fa fa-check"></i><b>6.1</b> Multiple folder source</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
-<li class="chapter" data-level="8" data-path="placeholder.html"><a href="placeholder.html"><i class="fa fa-check"></i><b>8</b> Placeholder</a></li>
 </ul>
 
       </nav>
@@ -129,24 +153,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="extra" class="section level1">
-<h1><span class="header-section-number">6</span> Extra</h1>
+<div id="addresources" class="section level1">
+<h1><span class="header-section-number">6</span> Additional resources</h1>
 <div id="multiple-folder-source" class="section level2">
 <h2><span class="header-section-number">6.1</span> Multiple folder source</h2>
 <p>Due to project organization, the user might requiered to use multiple folders as data sources. Therefore, the user is encorage to create their own copy of <em>MARA_ac_protocol.R</em> to process multiple folders. However, the user can also refer to <em>MARA_ac_protocol_multiple_folders.R</em> to process multiple files located in different folders (but all of them should share the same folder root).</p>
-<p>The user only requires to specify the root folder in the R script.</p>
+<p>The user only requires to specify the root folder as the <code>inputdir</code> parameter in the <em>MARA_ac_protocol_multiple_folders.R</em> R script.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">main &lt;-<span class="st"> </span>function(){
   inputdir &lt;-<span class="st"> &quot;E:</span><span class="ch">\\</span><span class="st">MUEVETE ESCOLAR&quot;</span>
   outputdir &lt;-<span class="st"> &quot;.</span><span class="ch">\\</span><span class="st">output&quot;</span>
   outputfile &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;COL MUEVETE&quot;</span>,<span class="kw">as.Date</span>(<span class="kw">Sys.time</span>()),<span class="st">&quot;.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)
   ...
 }</code></pre></div>
-</div>
-<div id="analyzing-outout" class="section level2">
-<h2><span class="header-section-number">6.2</span> Analyzing outout</h2>
-</div>
-<div id="example" class="section level2">
-<h2><span class="header-section-number">6.3</span> Example</h2>
 
 </div>
 </div>
@@ -155,7 +173,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="script-output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="output.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="final-words.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
