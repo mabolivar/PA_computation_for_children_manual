@@ -21,7 +21,7 @@ Results are exported to a CSV file.
 
 ## Table of contents
 1. R and RStudio (Chapter \@ref(RnRstudio))
-2. Required packages (Chapter \@ref(requiredPackages))
+2. Setting everything up (Chapter \@ref(setup))
 3. How to use this code? (Chapter \@ref(howto))
 4. Results (Chapter \@ref(output))
 5. Additional resources (Chapter \@ref(addresources))

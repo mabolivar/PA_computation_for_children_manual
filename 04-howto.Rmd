@@ -40,25 +40,31 @@ The main function is composed of nine blocks:
 
 The following block reads the database (.agd file) using the file directory `dbDir` and save the accelerometry data on the variable `data` and all the settings parameters on the variable `settings`.
 
+```{r,eval=F}
     db <- readDatabase(dbDir)
     data <- db$data
     settings <- db$settings
-
+```
+    
 ### Quality control checks
 
 This line performs all the quality control checks and receives as parameters the file directory, the accelerometry data, the settings and the pack data frame.
 
+```{r,eval=F}
 	valid <- qualityControlCheck(dbDir,data, settings, pack)
+```
 
 ### Data aggregation
 
 In this block the data is aggregated in 15sec epoch and 60sec epoch. In addition, an activity column is added to both data frames (all epochs are marked as "wear/wake").
 
+```{r,eval=F}
 	data15 <- aggregation(15, data)
     data60 <- aggregation(60, data)
     data15$activity <- rep("wear",nrow(data15)) #Activity (sleep, non-wear, wear/wake)
     data60$activity <- rep("wear",nrow(data60)) #Activity (sleep, non-wear, wear/wake)
-
+```
+    
 ### Sleep period identification
 	
 The function `sleepPeriods` identifies all the sleep periods and the non-wear periods within the sleep periods. As output, it returns a list with the sleep and non-wear periods. This function receives as parameter:
@@ -78,6 +84,7 @@ The function `sleepPeriods` identifies all the sleep periods and the non-wear pe
 
 Additionally, the function `setActivity()` adds the activity label to the *activity* column between the intervals in the data frame given as parameter.
 
+```{r,eval=F}
 	sleep <- sleepPeriods(data=data60,sleepOnsetHours= c(19,5),
 						bedTimemin = 5,
 						minSleepTime = 160,
@@ -91,24 +98,30 @@ Additionally, the function `setActivity()` adds the activity label to the *activ
                         overlap_frac = 0.9)
 	 data60 <- setActivity(label="sleep",intv=sleep$sleep,data60)
 	 data60 <- setActivity(label="non-wear",intv=sleep$sleepnw,data60)
+```
 
 ### Non-wear period identification
 
 In this block the non-wear periods are identified over the unlabeled minutes. The function `nonWearPeriods()` receives as parameter the data frame, the scan parameter used to identify the non-wear periods, the minimum number of minutes to identify a non-wear period and the tolerance.
 
+```{r,eval=F}
     nWP <- nonWearPeriods(data60, scanParam="axis1",innactivity=20,tolerance=0) #nonWearPeriods. Innactivity and tolerance in minutes
     data60 <- setActivity("non-wear",nWP,data60)
+```
 
 ### Wear periods check
 
 The following function search for count per epoch greater than the `maxcpm` parameter. Those epoch are labeled as invalid. Furthermore, the first minutes of the first day of the sample are labeled as "sleep".
 
+```{r,eval=F}
 	data60 <- checkWearPeriods(data60,maxcpm = 20000)
+```
 
 ### Cleaning (Remove last day of data and more than 7 days of data)
 
 The function `removeData()` deletes the days/hours/minutes/seconds (given as parameter) from the data frame.
 
+```{r,eval=F}
 	udays <- unique(as.Date(data60$datetime))
     firstday <- min(udays)
     lastday <- max(udays)
@@ -116,24 +129,25 @@ The function `removeData()` deletes the days/hours/minutes/seconds (given as par
     daystoremove <- udays[!(udays%in%validdays)]
     data15 <- removeData(data15,toremove=c(daystoremove,lastday),units="days") 
     data60 <- removeData(data60,toremove=c(daystoremove,lastday),units="days") 
-
+```
+    
 ### Add intensity physical activity
 
 This block performs two procedures. 1) Add the activity column from the 60sec epoch data frame to the 15sec epoch data frame. 2) Add the physical activity intensity to each epoch using evidence-based cut points. In this case, the Evenson et al. (2008) cut points are used.
 
+```{r,eval=F}
     data15 <- mergingActivity(data15,data60)
     data15$intensityEV <- mapply(cut_points_evenson,epoch=15, data15$axis1)
-	   
+```	   
 
 ### Get the datafile observation for the final data frame (only wear periods)
 	
 Extract all the physical activity intensity related variables for each participant.
-	      
+	 
+```{r,eval=F}	      
 	ob <- getobs(dbDir,data15, timeunit="min")
-
+```
 
 For further information about the functions and their parameters, you can refer to the function documentation.
-
-
 
 *After compile and load all the fuctions into the* ***workspace*** *, run the function `main( )` to obtain the final data frame.*
