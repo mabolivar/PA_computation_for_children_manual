@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Physical activity calculator manual</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="This is a manual for processing children accelerometry data based on .agd files from ActiGraph.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Physical activity calculator manual" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a manual for processing children accelerometry data based on .agd files from ActiGraph." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Physical activity calculator manual" />
+  
+  <meta name="twitter:description" content="This is a manual for processing children accelerometry data based on .agd files from ActiGraph." />
+  
+
+<meta name="author" content="Manuel A. Bolivar (ma.bolivar643@uniandes.edu.co)">
+<meta name="author" content="Olga Lucia Sarmiento (osarmien@uniandes.edu.co)">
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="howto.html">
+<link rel="next" href="addresources.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#table-of-contents"><i class="fa fa-check"></i><b>1.1</b> Table of contents</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="RnRstudio.html"><a href="RnRstudio.html"><i class="fa fa-check"></i><b>2</b> R and RStudio</a><ul>
+<li class="chapter" data-level="2.1" data-path="RnRstudio.html"><a href="RnRstudio.html#r"><i class="fa fa-check"></i><b>2.1</b> R</a></li>
+<li class="chapter" data-level="2.2" data-path="RnRstudio.html"><a href="RnRstudio.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="setup.html"><a href="setup.html"><i class="fa fa-check"></i><b>3</b> Setting everything up</a><ul>
+<li class="chapter" data-level="3.1" data-path="setup.html"><a href="setup.html#project-structure"><i class="fa fa-check"></i><b>3.1</b> Project structure</a></li>
+<li class="chapter" data-level="3.2" data-path="setup.html"><a href="setup.html#requiredPackages"><i class="fa fa-check"></i><b>3.2</b> Required packages</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="howto.html"><a href="howto.html"><i class="fa fa-check"></i><b>4</b> How to use this code?</a><ul>
+<li class="chapter" data-level="4.1" data-path="howto.html"><a href="howto.html#set-the-working-directory"><i class="fa fa-check"></i><b>4.1</b> Set the working directory</a></li>
+<li class="chapter" data-level="4.2" data-path="howto.html"><a href="howto.html#load-required-libraries"><i class="fa fa-check"></i><b>4.2</b> Load required libraries</a></li>
+<li class="chapter" data-level="4.3" data-path="howto.html"><a href="howto.html#load-functions"><i class="fa fa-check"></i><b>4.3</b> Load functions</a></li>
+<li class="chapter" data-level="4.4" data-path="howto.html"><a href="howto.html#set-global-parameters"><i class="fa fa-check"></i><b>4.4</b> Set global parameters</a></li>
+<li class="chapter" data-level="4.5" data-path="howto.html"><a href="howto.html#load-and-run-the-main-function"><i class="fa fa-check"></i><b>4.5</b> Load and run the main function</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="howto.html"><a href="howto.html#read-data-form-the-.agd-files-sqlite-databases"><i class="fa fa-check"></i><b>4.5.1</b> Read data form the .agd files (SQLite databases)</a></li>
+<li class="chapter" data-level="4.5.2" data-path="howto.html"><a href="howto.html#quality-control-checks"><i class="fa fa-check"></i><b>4.5.2</b> Quality control checks</a></li>
+<li class="chapter" data-level="4.5.3" data-path="howto.html"><a href="howto.html#data-aggregation"><i class="fa fa-check"></i><b>4.5.3</b> Data aggregation</a></li>
+<li class="chapter" data-level="4.5.4" data-path="howto.html"><a href="howto.html#sleep-period-identification"><i class="fa fa-check"></i><b>4.5.4</b> Sleep period identification</a></li>
+<li class="chapter" data-level="4.5.5" data-path="howto.html"><a href="howto.html#non-wear-period-identification"><i class="fa fa-check"></i><b>4.5.5</b> Non-wear period identification</a></li>
+<li class="chapter" data-level="4.5.6" data-path="howto.html"><a href="howto.html#wear-periods-check"><i class="fa fa-check"></i><b>4.5.6</b> Wear periods check</a></li>
+<li class="chapter" data-level="4.5.7" data-path="howto.html"><a href="howto.html#cleaning-remove-last-day-of-data-and-more-than-7-days-of-data"><i class="fa fa-check"></i><b>4.5.7</b> Cleaning (Remove last day of data and more than 7 days of data)</a></li>
+<li class="chapter" data-level="4.5.8" data-path="howto.html"><a href="howto.html#add-intensity-physical-activity"><i class="fa fa-check"></i><b>4.5.8</b> Add intensity physical activity</a></li>
+<li class="chapter" data-level="4.5.9" data-path="howto.html"><a href="howto.html#get-the-datafile-observation-for-the-final-data-frame-only-wear-periods"><i class="fa fa-check"></i><b>4.5.9</b> Get the datafile observation for the final data frame (only wear periods)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="output.html"><a href="output.html"><i class="fa fa-check"></i><b>5</b> Script output</a><ul>
+<li class="chapter" data-level="5.1" data-path="output.html"><a href="output.html#log-file"><i class="fa fa-check"></i><b>5.1</b> Log file</a></li>
+<li class="chapter" data-level="5.2" data-path="output.html"><a href="output.html#codebook"><i class="fa fa-check"></i><b>5.2</b> Codebook</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="addresources.html"><a href="addresources.html"><i class="fa fa-check"></i><b>6</b> Additional resources</a><ul>
+<li class="chapter" data-level="6.1" data-path="addresources.html"><a href="addresources.html#multiple-folder-source"><i class="fa fa-check"></i><b>6.1</b> Multiple folder source</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Physical activity calculator manual</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="output" class="section level1">
+<h1><span class="header-section-number">5</span> Script output</h1>
+<div id="log-file" class="section level2">
+<h2><span class="header-section-number">5.1</span> Log file</h2>
+<p>The R code will generate a file named <em>log.txt</em> and a .csv file with the result of the analysis. On one hand, the <em>log.txt</em> file presents all the the information of the run. The following is an example for four .agd files:</p>
+<pre><code>A1109_10459_201307181sec.agd........OK
+A1110_10488_201307181sec.agd........OK  
+A1111_10482_201307181sec.agd........SKIPPED (Wrong epoch) 
+A1112_10483_201307181sec.agd........OK</code></pre>
+</div>
+<div id="codebook" class="section level2">
+<h2><span class="header-section-number">5.2</span> Codebook</h2>
+<p>On the other hand, each row of the .csv file contains the aggregate information of one .agd file (i.e one participant). The variables are generated as follows:</p>
+<ul>
+<li><strong>PID</strong>: Participant ID</li>
+<li><strong>valid</strong>: At least 4 days with 10+ hours of wake/wear time, including 1 valid weekend day</li>
+<li><strong>valdays</strong>: Number of days with 10+ hours of wake/wear time</li>
+<li><strong>valwkdays</strong>: Number of WEEKDAYS with 10+ hours of wake/wear time</li>
+<li><strong>valwkend</strong>: Number of WEEKEND DAYS with 10+ hours of wake/wear time</li>
+<li><strong>allMeanWakeWear</strong>: Mean wake/wear time (mins) per day from all valid days</li>
+<li><strong>allMeanSleepNW</strong>: Mean sleep and non-wear (mins) per day from all valid days</li>
+<li><strong>allmean_mv_EV</strong>: Mean duration (mins) of (Evenson) MVPA per day</li>
+<li><strong>allmean_cntmv_EV</strong>: Mean daily total intensity counts in (Evenson) MVPA</li>
+<li><strong>allmean_v_EV</strong>: Mean duration (mins) of (Evenson) vigorous activity per day</li>
+<li><strong>allmean_cntv_EV</strong>: Mean daily total intensity counts in (Evenson) vigorous</li>
+<li><strong>allmean_m_EV</strong>: Mean duration (mins) of (Evenson) moderate activity per day</li>
+<li><strong>allmean_cntm_EV</strong>: Mean daily total intensity counts in (Evenson) moderate</li>
+<li><strong>allmean_l_EV</strong>: Mean duration (mins) of (Evenson) light activity per day</li>
+<li><strong>allmean_cntl_EV</strong>: Mean daily total intensity counts in (Evenson) light</li>
+<li><strong>allmean_s_EV</strong>: Mean duration (mins) of (Evenson) sedentary per day</li>
+<li><strong>allmean_cnts_EV</strong>: Mean daily total intensity counts in (Evenson) sedentary</li>
+<li><strong>allMeanActCounts</strong>: Mean daily total intensity counts</li>
+<li><strong>allMeanIntenPerMin</strong>: Mean intensity count per minute</li>
+<li><strong>WKDAYMeanWakeWear</strong>: Mean wake/wear time (mins) per day from all valid WEEKDAYS</li>
+<li><strong>WKDAYMeanSleepNW</strong>: Mean sleep and non-wear (mins) per day from all valid WEEKDAYS</li>
+<li><strong>WKDAYmean_mv_EV</strong>: Mean duration of (Evenson) MVPA per WEEKDAY</li>
+<li><strong>WKDAYmean_cntmv_EV</strong>: Mean daily total intensity counts in (Evenson) MVPA per WEEKDAY</li>
+<li><strong>WKDAYmean_v_EV</strong>: Mean duration of (Evenson) vigorous activity per WEEKDAY</li>
+<li><strong>WKDAYmean_cntv_EV</strong>: Mean daily total intensity counts in (Evenson) vigorous per WEEKDAY</li>
+<li><strong>WKDAYmean_m_EV</strong>: Mean duration of (Evenson) moderate activity per WEEKDAY</li>
+<li><strong>WKDAYmean_cntm_EV</strong>: Mean daily total intensity counts in (Evenson) moderate per WEEKDAY</li>
+<li><strong>WKDAYmean_l_EV</strong>: Mean duration of (Evenson) light activity per WEEKDAY</li>
+<li><strong>WKDAYmean_cntl_EV</strong>: Mean daily total intensity counts in (Evenson) light per WEEKDAY</li>
+<li><strong>WKDAYmean_s_EV</strong>: Mean duration of (Evenson) sedentary per WEEKDAY</li>
+<li><strong>WKDAYmean_cnts_EV</strong>: Mean daily total intensity counts in (Evenson) sedentary per WEEKDAY</li>
+<li><strong>WKDAYMeanActCounts</strong>: Mean daily total intensity counts from WEEKDAYS</li>
+<li><strong>WKDAYMeanIntenPerMin</strong>: Mean intensity count per minute from WEEKDAYS</li>
+<li><strong>WKENDMeanWakeWear</strong>: Mean wake/wear time (mins) per day from all valid WEEKEND DAYS</li>
+<li><strong>WKENDMeanSleepNW</strong>: Mean sleep and non-wear (mins) per day from all valid WEEKEND DAYS</li>
+<li><strong>WKENDmean_mv_EV</strong>: Mean duration of (Evenson) MVPA per WEEKEND DAY</li>
+<li><strong>WKENDmean_cntmv_EV</strong>: Mean daily total intensity counts in (Evenson) MVPA per WEEKEND DAY</li>
+<li><strong>WKENDmean_v_EV</strong>: Mean duration of (Evenson) vigorous activity per WEEKEND DAY</li>
+<li><strong>WKENDmean_cntv_EV</strong>: Mean daily total intensity counts in (Evenson) vigorous per WEEKEND DAY</li>
+<li><strong>WKENDmean_m_EV</strong>: Mean duration of (Evenson) moderate activity per WEEKEND DAY</li>
+<li><strong>WKENDmean_cntm_EV</strong>: Mean daily total intensity counts in (Evenson) moderate per WEEKEND DAY</li>
+<li><strong>WKENDmean_l_EV</strong>: Mean duration of (Evenson) light activity per WEEKEND DAY</li>
+<li><strong>WKENDmean_cntl_EV</strong>: Mean daily total intensity counts in (Evenson) light per WEEKEND DAY</li>
+<li><strong>WKENDmean_s_EV</strong>: Mean duration of (Evenson) sedentary per WEEKEND DAY</li>
+<li><strong>WKENDmean_cnts_EV</strong>: Mean daily total intensity counts in (Evenson) sedentary per WEEKEND DAY</li>
+<li><strong>WKENDMeanActCounts</strong>: Mean daily total intensity counts from WEEKEND DAYS</li>
+<li><strong>WKENDMeanIntenPerMin</strong>: Mean intensity count per minute from WEEKEND DAYS</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="howto.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="addresources.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
